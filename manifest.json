@@ -1,0 +1,21 @@
+{
+	"manifest_version": 2,
+	"name":"QR-url",
+	"description": "Generate the QR code of current page",
+	"version": "0.0.1",
+	"author": "Hakurouken",
+	"browser_action": {
+      "default_popup": "popup.html"
+    },
+	"permissions":[
+		"tabs"
+	],
+  	"commands": {
+      "_execute_browser_action": {
+        "suggested_key": {
+          "default": "Ctrl+Shift+S",
+          "mac": "Command+Shift+S"
+        }
+      }
+	}
+}
