@@ -1,5 +1,6 @@
 (function(window,document,undefined){
 
+	// jQuery.extend
 	var extend = function() {
 		var src, copyIsArray, copy, name, options, clone,
 			target = arguments[0] || {},
@@ -16,17 +17,6 @@
 			i++;
 		}
 
-		// Handle case when target is a string or something (possible in deep copy)
-		if ( typeof target !== "object" && !jQuery.isFunction(target) ) {
-			target = {};
-		}
-
-		// extend jQuery itself if only one argument is passed
-		if ( i === length ) {
-			target = this;
-			i--;
-		}
-
 		for ( ; i < length; i++ ) {
 			// Only deal with non-null/undefined values
 			if ( (options = arguments[ i ]) != null ) {
@@ -41,17 +31,10 @@
 					}
 
 					// Recurse if we're merging plain objects or arrays
-					if ( deep && copy && ( jQuery.isPlainObject(copy) || (copyIsArray = jQuery.isArray(copy)) ) ) {
-						if ( copyIsArray ) {
-							copyIsArray = false;
-							clone = src && jQuery.isArray(src) ? src : [];
-
-						} else {
-							clone = src && jQuery.isPlainObject(src) ? src : {};
-						}
-
+					if ( deep && copy ) {
+						clone = src;
 						// Never move original objects, clone them
-						target[ name ] = jQuery.extend( deep, clone, copy );
+						target[ name ] = extend( deep, clone, copy );
 
 					// Don't bring in undefined values
 					} else if ( copy !== undefined ) {
