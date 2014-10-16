@@ -63,7 +63,7 @@
 		chrome.windows.getCurrent(null,function(win){
 			chrome.tabs.query({active:true,windowId:win.id},function(tabs){
 				var tab = tabs[0] || {},
-					url = tab.url;
+					url = encodeURIComponent(tab.url);
 				img.src = 'https://chart.googleapis.com/chart?cht=qr&chs=' + opt.width + 'x' + opt.height + '&chl=' + url + '&choe=' + opt.choe + '&chld=' + opt.chld ;
 				if( tab.favIconUrl && /^http(s)?:\/\//.test(tab.favIconUrl) ){
 					favicon.src = tab.favIconUrl;
